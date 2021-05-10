@@ -1,17 +1,21 @@
 package com.example.missionservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor @ToString
-public class Mission {
+@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class)
+public class Mission implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -20,7 +24,9 @@ public class Mission {
     @Enumerated(EnumType.STRING)
     private TypeMission typeMission;
     private String entrepriseId;
+    private String entrepriseName;
     private String coachId;
+    private String coachName;
     @Temporal(TemporalType.DATE)
     private Date startDate;
     @Temporal(TemporalType.DATE)
@@ -31,6 +37,7 @@ public class Mission {
     private String content;
     private double price;
     private int nbrplace;
+    private String img;
 
     @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
     private List<Demande> demandes;

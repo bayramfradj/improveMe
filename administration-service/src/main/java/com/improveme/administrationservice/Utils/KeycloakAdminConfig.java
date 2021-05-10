@@ -8,7 +8,7 @@ import org.keycloak.admin.client.KeycloakBuilder;
 public class KeycloakAdminConfig {
 
     static Keycloak keycloak = null;
-    final static String serverUrl = "http://192.168.1.6:8080/auth";
+    final static String serverUrl = "http://10.0.0.2:8080/auth";
     final static String realm = "master";
     final static String clientId = "admin-cli";
     final static String userName = "bayram";
