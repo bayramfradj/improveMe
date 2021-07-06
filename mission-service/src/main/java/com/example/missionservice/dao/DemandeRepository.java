@@ -11,7 +11,11 @@ import java.util.List;
 
 @Repository
 public interface DemandeRepository extends JpaRepository<Demande, Long> {
-    public Demande findByUserIdAndMission(String userId, Mission mission);
-    public int countAllByMissionAndIsPayed(Mission mission, boolean isPayed);
-    public List<Demande> findAllByUserIdAndStateCandidatureAndMission_StateMission(String UserId, StateCandidature stateCandidature, StateMission stateMission);
+     Demande findByUserIdAndMission(String userId, Mission mission);
+     int countAllByMissionAndIsPayed(Mission mission, boolean isPayed);
+     List<Demande> findAllByUserIdAndStateCandidatureAndMission_StateMission(String UserId, StateCandidature stateCandidature, StateMission stateMission);
+     List<Demande> findAllByMissionAndStateCandidature(Mission mission, StateCandidature stateCandidature);
+     List<Demande> findAllByUserId(String UserId);
+     List<Demande> findAllByMissionAndStateCandidatureAndAffected(Mission mission, StateCandidature stateCandidature, boolean affected);
+     Demande findFirstByUserIdAndMission(String UserId, Mission mission );
 }
