@@ -65,4 +65,9 @@ public class GroupeService {
                 .stream().map(membre -> membre.getGroupe())
                 .collect(Collectors.toList());
     }
+
+    public Groupe getGroupeByUserAndMission(String userId, long missionId)
+    {
+        return membreRepository.findFirstByUserIdAndGroupe_MissionIdAndGroupe_Archived(userId,missionId,false).getGroupe();
+    }
 }

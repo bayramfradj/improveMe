@@ -26,6 +26,12 @@ public class GroupeController {
         return groupeService.getGroupesByUserId(userId);
     }
 
+    @GetMapping("Mission/ByUser/{userId}/{missionId}")
+    public Groupe ByUser(@PathVariable("userId") String userId, @PathVariable("missionId") long missionId )
+    {
+        return groupeService.getGroupeByUserAndMission(userId, missionId);
+    }
+
     @PostMapping("/")
     public Groupe save(@RequestBody Groupe groupe)
     {

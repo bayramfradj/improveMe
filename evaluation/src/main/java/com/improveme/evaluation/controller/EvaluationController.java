@@ -45,16 +45,16 @@ public class EvaluationController {
         return evaluationService.getListByMissionId(id);
     }
 
-    @PostMapping("/Response/")
-    public Response saveRes(@RequestBody Response response)
+    @PostMapping("/Response/{evalId}")
+    public Response saveRes(@RequestBody Response response, @PathVariable("evalId") long evalId)
     {
-        return evaluationService.saveResponse(response);
+        return evaluationService.saveResponse(response, evalId);
     }
 
-    @PutMapping("/Response/")
-    public Response upRes(@RequestBody Response response)
+    @PutMapping("/Response/{repId}")
+    public Response upRes(@RequestBody Response response, @PathVariable("repId") long repId)
     {
-        return evaluationService.updateResponse(response);
+        return evaluationService.updateResponse(response, repId);
     }
 
     @DeleteMapping("/Response/{id}")

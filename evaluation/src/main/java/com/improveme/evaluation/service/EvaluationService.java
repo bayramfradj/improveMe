@@ -51,17 +51,18 @@ public class EvaluationService {
         return evaluationRepository.findAllByMissionId(missionId);
     }
 
-    public Response saveResponse(Response response)
+    public Response saveResponse(Response response, long evald)
     {
-        Evaluation eval = evaluationRepository.findById(response.getEvaluation().getId()).get();
+        Evaluation eval = evaluationRepository.findById(evald).get();
         response.setEvaluation(eval);
         return responseRepository.save(response);
     }
 
-    public Response updateResponse(Response response)
+    public Response updateResponse(Response response, long repId)
     {
-        Response res = responseRepository.findById(response.getId()).get();
+        Response res = responseRepository.findById(repId).get();
         response.setId(res.getId());
+        response.setEvaluation(res.getEvaluation());
         return responseRepository.save(response);
     }
 

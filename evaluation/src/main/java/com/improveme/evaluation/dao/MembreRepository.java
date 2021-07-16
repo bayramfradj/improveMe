@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface MembreRepository extends JpaRepository<Membre,Long> {
     List<Membre> findAllByUserIdAndGroupe_Archived(String userId, boolean archived);
+    Membre findFirstByUserIdAndGroupe_MissionIdAndGroupe_Archived(String userId,long missionId , boolean archived);
 }
